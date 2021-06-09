@@ -1,5 +1,8 @@
 local VLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vep1032/VepStuff/main/VL"))()
 local amount = fovamount
+local player = game.Players.LocalPlayer
+local character = player.Character
+local humanoid = character.Humanoid
 
 noclip = false
 game:GetService('RunService').Stepped:connect(function()
@@ -9,9 +12,6 @@ end
 end)
 
 
-
-
-plr = game.Players.LocalPlayer
 game.StarterGui:SetCore("SendNotification", {
 Title = "Loaded";
 Text = "why r u using this";
@@ -53,3 +53,10 @@ end)
 ss:Slider("FOV",0,120,70,function(amount)
 game:GetService'Workspace'.Camera.FieldOfView = amount
 end)
+
+ss:Slider("JumpHeight",0,100,50,function(height)
+humanoid.JumpPower = height
+end)
+
+
+
