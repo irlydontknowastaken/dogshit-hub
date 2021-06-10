@@ -101,12 +101,18 @@ end
 
 
 ss:Toggle("Fly",function(t)
-	flying = true
-	bp.MaxForce = Vector3.new(400000,400000,400000)
-	bg.MaxTorque = Vector3.new(400000,400000,400000)
-	while flying do
-		rs.RenderStepped:wait()
-		bp.Position = myHRP.Position +((myHRP.Position - camera.CFrame.p).unit * speed)
-		bg.CFrame = CFrame.new(camera.CFrame.p, myHRP.Position)
+	if flying == true then
+		bp.MaxForce = Vector3.new()
+		bg.MaxTorque = Vector3.new()
+		flying = false
+	else
+		flying = true
+		bp.MaxForce = Vector3.new(400000,400000,400000)
+		bg.MaxTorque = Vector3.new(400000,400000,400000)
+		while flying do
+			rs.RenderStepped:wait()
+			bp.Position = myHRP.Position +((myHRP.Position - camera.CFrame.p).unit * speed)
+			bg.CFrame = CFrame.new(camera.CFrame.p, myHRP.Position)
+		end
 	end
 end)
