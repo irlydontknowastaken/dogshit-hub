@@ -57,6 +57,3 @@ end)
 ss:Slider("JumpHeight",0,100,50,function(height)
 humanoid.JumpPower = height
 end)
-
-
-
