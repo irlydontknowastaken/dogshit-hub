@@ -3,6 +3,25 @@ local amount = fovamount
 local player = game.Players.LocalPlayer
 local character = player.Character
 local humanoid = character.Humanoid
+local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+local myPlayer = game.Players.LocalPlayer
+local myChar = myPlayer.Character
+local myHRP = myChar:WaitForChild("HumanoidRootPart")
+
+local bp = Instance.new("BodyPosition", myHRP)
+bp.MaxForce = Vector3.new()
+bp.D = 10
+bp.P = 10000
+local bg = Instance.new("BodyGyro", myHRP)
+bg.MaxTorque = Vector3.new()
+bg.D = 10
+local flying = false 
+local rs = game:GetService("RunService") 
+local camera = game.Workspace.CurrentCamera
+local speed = 0.5 
+
+
 
 noclip = false
 game:GetService('RunService').Stepped:connect(function()
@@ -79,3 +98,15 @@ for _, v in pairs(game:GetService("Players"):GetPlayers()) do
     end
 end
 
+
+
+ss:Toggle("Fly",function(t)
+	flying = true
+	bp.MaxForce = Vector3.new(400000,400000,400000)
+	bg.MaxTorque = Vector3.new(400000,400000,400000)
+	while flying do
+		rs.RenderStepped:wait()
+		bp.Position = myHRP.Position +((myHRP.Position - camera.CFrame.p).unit * speed)
+		bg.CFrame = CFrame.new(camera.CFrame.p, myHRP.Position)
+	end
+end)
