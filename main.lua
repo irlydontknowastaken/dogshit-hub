@@ -9,6 +9,8 @@ local myPlayer = game.Players.LocalPlayer
 local myChar = myPlayer.Character
 local myHRP = myChar:WaitForChild("HumanoidRootPart")
 
+
+
 local bp = Instance.new("BodyPosition", myHRP)
 bp.MaxForce = Vector3.new()
 bp.D = 10
@@ -116,3 +118,5 @@ ss:Toggle("Fly",function(t)
 		end
 	end
 end)
+
+
