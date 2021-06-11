@@ -1,3 +1,12 @@
+local testing = "no" 
+local player = game.Players.LocalPlayer
+local character = player.Character
+local humanoid = character.Humanoid
+local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+local myPlayer = game.Players.LocalPlayer
+local myChar = myPlayer.Character
+local myHRP = myChar:WaitForChild("HumanoidRootPart")
 
 if syn then
 	if testing == "yes" then
@@ -19,5 +28,3 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/irlydontknowastaken/d
 end
 end
 end
-
-
